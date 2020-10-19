@@ -1,0 +1,8 @@
+...James CameronJames CameronRichard Linklater..
+
+1 deprecation warning total
+
+Finished in 0.07275 seconds (files took 1.7 seconds to load)
+5 examples, 0 failures
+
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 44 / 57 LOC (77.19%) covered.

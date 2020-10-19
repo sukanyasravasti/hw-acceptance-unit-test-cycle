@@ -1,20 +1,18 @@
 
 MoviesController
-  Search movies by same director
-    should call Movie.similar_movies
-    should assign similar movies if director exists
-    should redirect to home page if director isn't known
+  #similar_movies
+    when a director is found
+      should return a list of movies with the same director
+    when a director is not found
+      should redirect to the home page
 
 Movie
-  .find_similar_movies
-    director exists
-      finds similar movies
-    director does not exist
-      sad path
+  director exists
+    finds similar movies
+  director does not exist
+    hits sad path
 
-1 deprecation warning total
+Finished in 0.03877 seconds (files took 1.67 seconds to load)
+4 examples, 0 failures
 
-Finished in 0.06587 seconds (files took 1.66 seconds to load)
-5 examples, 0 failures
-
-Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 48 / 56 LOC (85.71%) covered.
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 42 / 55 LOC (76.36%) covered.

@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   def self.similar_movies(movie_title)
     #byebug
     director = self.where(title: movie_title).pluck(:director)
-    print director[0]
+    #print director[0]
     if director[0].blank? or director[0].nil? or director[0].empty?  #case of sad path
       return nil
     else  

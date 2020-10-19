@@ -1,22 +1,26 @@
 require 'rails_helper'
 
 describe MoviesController do
-  describe 'Search movies by same director' do
-    it 'should call Movie.similar_movies' do
-      expect(Movie).to receive(:similar_movies).with('Aladdin')
-      get :search, { title: 'Aladdin' }
+  describe '#similar_movies' do
+    context 'when a director is found' do
+      it "should return a list of movies with the same director" do
+        my_movie = double('Movie', :id => '1', :title => 'Alien', :director => 'Spielberg')
+        expect(Movie).to receive(:find).with('1').and_return(my_movie)
+        expect(my_movie.director).to eql 'Spielberg'
+        expect(Movie).to receive(:find_movies_by_director).with('Spielberg')
+        get :similar_movies, {:id => 1}
+      end
     end
 
-    it 'should assign similar movies if director exists' do
-      Movie.stub(:similar_movies).with('Lady Bird').and_return(['Lady Bird', 'Little Women']) #with() is the given input, i.e when similar_movies is called with input Lady Bird
-      get :search, {title: 'Lady Bird'} #without this search method tet similar_movies would never be called
-      expect(assigns(:similar_movies)).to eql(['Lady Bird', 'Little Women'])
+    context 'when a director is not found' do
+      it "should redirect to the home page" do
+        my_movie = double('Movie', :id => '1', :title => 'Alien', :director => nil)
+        expect(Movie).to receive(:find).with('1').and_return(my_movie)
+        get :similar_movies, {:id => "1"}
+        expect(flash[:notice]).to match(/'Alien' has no director info/)
+        expect(response).to redirect_to(movies_path)
+      end
     end
-    
-    it "should redirect to home page if director isn't known" do
-      Movie.stub(:similar_movies).with('No Director').and_return(nil)
-       get :search, {title: 'No Director'}
-       expect(response).to redirect_to(movies_path)
-     end
   end
+
 end

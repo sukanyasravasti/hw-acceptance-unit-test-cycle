@@ -1,6 +1,4 @@
--# in app/views/movies/show.html.haml
-
-%h3 Details about #{@movie.title}
+%h2 Details about #{@movie.title}
 
 %ul#details
   %li
@@ -12,10 +10,15 @@
   %li
     Director:
     = @movie.director
-%p= link_to "Find Movies With Same Director", search_similar_movies_path(@movie)
-%h4 Description:
+
+%h3 Description:
 
 %p#description= @movie.description
+
+= link_to 'Edit', edit_movie_path(@movie)
+= link_to 'Find Movies With Same Director', similar_movies_path(@movie)
+= link_to 'Back to movie list', movies_path
+= button_to 'Delete', movie_path(@movie), :method => :delete, :confirm => 'Are you sure?'
 
 
 = link_to 'Edit', edit_movie_path(@movie)

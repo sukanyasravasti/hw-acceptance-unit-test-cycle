@@ -45,5 +45,5 @@ cucumber features/search_movies_by_director.feature:29 # Scenario: can't find si
 
 3 scenarios (2 failed, 1 passed)
 17 steps (2 failed, 2 skipped, 13 passed)
-0m0.366s
-Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 44 / 57 LOC (77.19%) covered.
+0m0.305s
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 43 / 56 LOC (76.79%) covered.
